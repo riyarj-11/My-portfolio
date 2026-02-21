@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, Award } from "lucide-react";
+import { Briefcase, Award, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
@@ -24,59 +24,73 @@ const certifications = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 px-6 bg-card/30">
-      <div className="container mx-auto max-w-4xl">
+    <section id="experience" className="py-28 px-6 relative">
+      <div className="absolute top-0 left-1/2 w-96 h-96 bg-primary/5 blur-[150px] rounded-full -translate-x-1/2" />
+
+      <div className="container mx-auto max-w-5xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold font-mono mb-2">
+          <span className="text-primary font-mono text-sm tracking-widest uppercase">// my journey</span>
+          <h2 className="text-3xl md:text-5xl font-bold font-mono mt-2 mb-3">
             <span className="text-gradient">Experience</span> & Achievements
           </h2>
-          <div className="w-16 h-1 bg-primary rounded-full" />
+          <div className="w-20 h-1 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Experience */}
-          <div className="space-y-6">
-            <h3 className="font-mono text-sm text-primary uppercase tracking-wider flex items-center gap-2">
+          <div>
+            <h3 className="font-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 mb-6">
               <Briefcase className="w-4 h-4" /> Work Experience
             </h3>
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.role}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-5 rounded-xl border border-glow bg-card/50 backdrop-blur-sm"
-              >
-                <p className="font-mono font-semibold text-sm mb-1">{exp.role}</p>
-                <p className="text-xs text-primary mb-3">{exp.period}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
-              </motion.div>
-            ))}
+            <div className="space-y-5">
+              {experiences.map((exp, i) => (
+                <motion.div
+                  key={exp.role}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-6 rounded-2xl glass neon-border group hover:glow-primary transition-all duration-300"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-primary/10 text-primary">{exp.period}</span>
+                  </div>
+                  <h4 className="font-mono font-bold text-sm mb-2 group-hover:text-primary transition-colors">{exp.role}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Certifications */}
           <div>
-            <h3 className="font-mono text-sm text-primary uppercase tracking-wider flex items-center gap-2 mb-6">
-              <Award className="w-4 h-4" /> Certifications & Achievements
+            <h3 className="font-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 mb-6">
+              <Award className="w-4 h-4" /> Achievements
             </h3>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-5 rounded-xl border border-glow bg-card/50 backdrop-blur-sm"
+              className="p-6 rounded-2xl glass neon-border"
             >
-              <ul className="space-y-3">
-                {certifications.map((cert) => (
-                  <li key={cert} className="flex items-start gap-3 text-sm">
-                    <span className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0" />
-                    <span className="text-muted-foreground">{cert}</span>
-                  </li>
+              <ul className="space-y-4">
+                {certifications.map((cert, i) => (
+                  <motion.li
+                    key={cert}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3 text-sm group"
+                  >
+                    <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span className="text-muted-foreground group-hover:text-foreground transition-colors">{cert}</span>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
