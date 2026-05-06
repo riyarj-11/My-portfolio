@@ -62,7 +62,7 @@ const ProjectsSection = () => {
           <div className="w-20 h-1 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -106,10 +106,10 @@ const ProjectsSection = () => {
 
                 {/* Links */}
                 <div className="flex gap-3 pt-3 border-t border-border/50">
-                  <a href="#" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-primary transition-colors">
                     <Github className="w-3.5 h-3.5" /> Code
                   </a>
-                  <a href="#" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors">
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors">
                     <ExternalLink className="w-3.5 h-3.5" /> Demo
                   </a>
                 </div>
