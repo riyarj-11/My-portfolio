@@ -1,77 +1,16 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Rocket, ChevronDown, Download } from "lucide-react";
 
-const roles = [
-  "Full Stack Developer",
-  "DSA Enthusiast",
-  "Problem Solver",
-  "AI Enthusiast",
-  "MERN Stack Developer",
-];
-
-const floatingIcons = ["⚛️", "🔥", "💻", "🚀", "⚡", "🎯"];
-
 const HeroSection = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = roles[roleIndex];
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setText(current.slice(0, text.length + 1));
-          if (text.length + 1 === current.length) {
-            setTimeout(() => setIsDeleting(true), 2000);
-          }
-        } else {
-          setText(current.slice(0, text.length - 1));
-          if (text.length === 0) {
-            setIsDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % roles.length);
-          }
-        }
-      },
-      isDeleting ? 40 : 80
-    );
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, roleIndex]);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-neon-purple/5 blur-[150px]" />
+      {/* Ambient gradient orbs */}
+      <div className="absolute top-1/4 -left-32 w-[28rem] h-[28rem] rounded-full bg-primary/15 blur-[140px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 -right-32 w-[28rem] h-[28rem] rounded-full bg-accent/15 blur-[140px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-neon-purple/10 blur-[160px]" />
 
-      {/* Floating icons */}
-      {floatingIcons.map((icon, i) => (
-        <motion.div
-          key={i}
-          className="absolute text-2xl opacity-20 select-none pointer-events-none"
-          style={{
-            top: `${15 + Math.random() * 70}%`,
-            left: `${5 + Math.random() * 90}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            rotate: [0, 360],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 6 + i * 0.8,
-            repeat: Infinity,
-            delay: i * 0.5,
-          }}
-        >
-          {icon}
-        </motion.div>
-      ))}
-
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      {/* Subtle grid */}
+      <div className="absolute inset-0 opacity-[0.04]">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(hsl(var(--primary) / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / 0.5) 1px, transparent 1px)',
           backgroundSize: '80px 80px'
@@ -79,128 +18,108 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center"
-        >
-          {/* Status badge */}
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Greeting badge */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass neon-border mb-10"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass neon-border mb-10"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground font-mono">Available for opportunities</span>
+            <span className="text-xs md:text-sm text-muted-foreground font-mono tracking-wider">
+              Hello, I'm
+            </span>
           </motion.div>
 
-          {/* Name - large and prominent */}
+          {/* Name — dominant hero typography */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-sans mb-4 tracking-tight leading-none"
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="font-sans font-extrabold tracking-tighter leading-[0.9] mb-8"
+            style={{ fontSize: "clamp(3.5rem, 14vw, 11rem)" }}
           >
-            <span className="text-gradient-cyan-purple drop-shadow-[0_0_30px_hsl(var(--primary)/0.5)]">
+            <span className="block bg-gradient-to-r from-primary via-accent to-neon-purple bg-clip-text text-transparent drop-shadow-[0_0_40px_hsl(var(--primary)/0.35)]">
               Riya Raj
             </span>
           </motion.h1>
 
-          {/* Tagline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-2xl md:text-4xl lg:text-5xl font-bold font-mono mb-4 tracking-tight leading-tight"
-          >
-            <span className="text-foreground">I Build </span>
-            <span className="text-gradient">Scalable</span>
-            <span className="text-foreground"> Digital Experiences.</span>
-          </motion.h2>
-
-          {/* Typing effect */}
+          {/* Accent line */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="h-10 flex items-center justify-center mb-8"
-          >
-            <span className="text-lg md:text-xl font-mono text-muted-foreground">
-              {"<"}
-            </span>
-            <span className="text-lg md:text-xl font-mono text-primary mx-2 typing-cursor">
-              {text}
-            </span>
-            <span className="text-lg md:text-xl font-mono text-muted-foreground">
-              {"/>"}
-            </span>
-          </motion.div>
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent mb-8 origin-center"
+          />
 
-          {/* Subtitle */}
+          {/* Tagline */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-12 leading-relaxed"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="font-mono text-base md:text-xl lg:text-2xl text-muted-foreground mb-12 tracking-wide"
           >
-            Hi, I'm <span className="text-foreground font-semibold">Riya Raj</span> — crafting modern web experiences with React, TypeScript & the MERN stack.
+            <span className="text-foreground font-medium">Full Stack Developer</span>
+            <span className="mx-3 text-primary">|</span>
+            <span className="text-foreground font-medium">AI Enthusiast</span>
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex items-center justify-center gap-4 flex-wrap mb-10"
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="flex items-center justify-center gap-4 flex-wrap mb-14"
           >
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold glow-primary hover:scale-105 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold glow-primary hover:scale-105 transition-all duration-300"
             >
-              <Rocket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <Rocket className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:rotate-12 transition-transform" />
               View Projects
             </a>
             <a
-              href="mailto:riyarajdk@gmail.com"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl glass neon-border font-semibold hover:scale-105 transition-all duration-300"
+              href="#contact"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl glass neon-border font-semibold hover:scale-105 transition-all duration-300"
             >
-              <Mail className="w-5 h-5" />
-              Hire Me
+              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              Contact Me
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-border bg-card/50 font-medium hover:border-primary/50 hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-xl text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4" />
               Resume
             </a>
           </motion.div>
 
-          {/* Social links */}
+          {/* Socials */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="flex items-center justify-center gap-4"
+            transition={{ delay: 1.1 }}
+            className="flex items-center justify-center gap-3"
           >
             {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+              { icon: Github, href: "https://github.com/riyarj-11", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/riyarj11/", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:riyarajdk@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={label}
                 className="group p-3 rounded-xl glass hover:glow-primary transition-all duration-300"
               >
                 <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
@@ -208,10 +127,10 @@ const HeroSection = () => {
         href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.4 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-primary transition-colors"
       >
-        <span className="text-xs font-mono">scroll</span>
+        <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
           <ChevronDown className="w-5 h-5" />
         </motion.div>
