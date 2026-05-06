@@ -1,28 +1,43 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Bot, Gift, Wallet } from "lucide-react";
+import { ExternalLink, Github, Bot, Coffee, Wallet, User } from "lucide-react";
 
 const projects = [
   {
-    icon: Bot,
-    title: "Sakhi: Digital Companion",
-    description: "AI chatbot offering comfort, companionship, and emotional support with warm, human-like interactions.",
-    tech: ["HTML", "CSS", "JavaScript", "TypeScript", "React"],
+    icon: User,
+    title: "My Portfolio",
+    description: "Personal portfolio built with React, TypeScript, Node/Express & Supabase — showcasing projects, skills, and an AI chat assistant.",
+    tech: ["React", "TypeScript", "Node.js", "Express", "Supabase"],
     gradient: "from-primary to-neon-purple",
+    github: "https://github.com/riyarj-11/sakhi-your-digital-companion.git",
+    demo: "#",
   },
   {
-    icon: Gift,
-    title: "AppStory Scratch Card",
-    description: "Interactive Scratch Card web app using Canvas API and React state to reveal rewards dynamically.",
-    tech: ["HTML", "CSS", "JavaScript", "React", "Canvas API"],
+    icon: Coffee,
+    title: "Roast Ritual: Premium Brew",
+    description: "Premium e-commerce website for Roast Ritual Brew — clean, modern, responsive UI with smooth navigation and performance optimization.",
+    tech: ["HTML", "CSS", "JavaScript", "TypeScript", "React"],
     gradient: "from-accent to-primary",
+    github: "#",
+    demo: "https://roast-ritual-premium-brew.vercel.app",
+  },
+  {
+    icon: Bot,
+    title: "Sakhi: Digital Companion",
+    description: "AI chatbot offering comfort, companionship, and emotional support with warm, human-like real-time interactions.",
+    tech: ["React", "TypeScript", "JavaScript", "CSS"],
+    gradient: "from-neon-purple to-accent",
+    github: "#",
+    demo: "https://sakhi-your-digital-companion.vercel.app",
   },
   {
     icon: Wallet,
     title: "Pocket Ledger",
     description: "Full-stack expense management app with JWT authentication, REST APIs, and real-time balance calculation.",
     tech: ["React", "TypeScript", "REST API", "JWT"],
-    gradient: "from-neon-purple to-accent",
+    gradient: "from-primary to-accent",
+    github: "#",
+    demo: "#",
   },
 ];
 
@@ -47,7 +62,7 @@ const ProjectsSection = () => {
           <div className="w-20 h-1 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -91,10 +106,10 @@ const ProjectsSection = () => {
 
                 {/* Links */}
                 <div className="flex gap-3 pt-3 border-t border-border/50">
-                  <a href="#" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-primary transition-colors">
                     <Github className="w-3.5 h-3.5" /> Code
                   </a>
-                  <a href="#" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors">
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors">
                     <ExternalLink className="w-3.5 h-3.5" /> Demo
                   </a>
                 </div>

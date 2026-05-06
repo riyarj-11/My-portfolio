@@ -96,19 +96,29 @@ const HeroSection = () => {
             <span className="text-sm text-muted-foreground font-mono">Available for opportunities</span>
           </motion.div>
 
-          {/* Main heading */}
+          {/* Name - large and prominent */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-mono mb-4 tracking-tight leading-tight"
+            transition={{ delay: 0.35 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-sans mb-4 tracking-tight leading-none"
+          >
+            <span className="text-gradient-cyan-purple drop-shadow-[0_0_30px_hsl(var(--primary)/0.5)]">
+              Riya Raj
+            </span>
+          </motion.h1>
+
+          {/* Tagline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-2xl md:text-4xl lg:text-5xl font-bold font-mono mb-4 tracking-tight leading-tight"
           >
             <span className="text-foreground">I Build </span>
             <span className="text-gradient">Scalable</span>
-            <br />
-            <span className="text-foreground">Digital </span>
-            <span className="text-gradient-cyan-purple">Experiences.</span>
-          </motion.h1>
+            <span className="text-foreground"> Digital Experiences.</span>
+          </motion.h2>
 
           {/* Typing effect */}
           <motion.div
