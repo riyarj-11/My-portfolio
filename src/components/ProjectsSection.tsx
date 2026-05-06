@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Bot, Coffee, Wallet, User } from "lucide-react";
+import { ExternalLink, Github, Bot, Coffee, User } from "lucide-react";
 
 const projects = [
   {
@@ -29,15 +29,6 @@ const projects = [
     gradient: "from-neon-purple to-accent",
     github: "#",
     demo: "https://sakhi-your-digital-companion.vercel.app",
-  },
-  {
-    icon: Wallet,
-    title: "Pocket Ledger",
-    description: "Full-stack expense management app with JWT authentication, REST APIs, and real-time balance calculation.",
-    tech: ["React", "TypeScript", "REST API", "JWT"],
-    gradient: "from-primary to-accent",
-    github: "#",
-    demo: "#",
   },
 ];
 

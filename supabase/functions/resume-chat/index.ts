@@ -29,7 +29,6 @@ An optimistic and passionate individual with excellent communication skills seek
 1. My Portfolio - Personal portfolio website built with React, TypeScript, Node.js, Express, and Supabase. Showcases projects, skills, and experience with a clean, responsive UI and AI chat. (https://github.com/riyarj-11/sakhi-your-digital-companion.git)
 2. Roast Ritual: Premium Brew Website - Premium e-commerce site for coffee products with modern responsive UI built with HTML, CSS, JavaScript, TypeScript, React. (https://roast-ritual-premium-brew.vercel.app)
 3. Sakhi: Digital Companion - AI chatbot offering comfort, companionship, and emotional support. Built with HTML, CSS, JavaScript, TypeScript, and React. (https://sakhi-your-digital-companion.vercel.app)
-4. Pocket Ledger - Full-stack expense management app using React (TypeScript) with REST APIs, JWT auth, and responsive UI.
 
 **Experience:**
 1. IBM Virtual Internship - Generative AI (Sep 2025 – Nov 2025): 6-week internship covering LLMs, prompt engineering, NLP, model integration, and building scalable AI solutions.
